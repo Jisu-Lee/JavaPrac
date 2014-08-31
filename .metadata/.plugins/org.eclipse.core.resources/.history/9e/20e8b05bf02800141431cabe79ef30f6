@@ -1,0 +1,15 @@
+
+public class Test{
+        public static void main(String[] ar){
+        final int x = 5;
+        class TestInner{
+        	int y = 4;
+        	public void display(){
+        	System.out.println(x);
+        	System.out.println(y);
+        	}
+        }
+        TestInner ti = new TestInner();
+        ti.display();
+}
+}

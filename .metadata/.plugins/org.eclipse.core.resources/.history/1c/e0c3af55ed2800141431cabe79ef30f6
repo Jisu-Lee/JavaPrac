@@ -1,0 +1,17 @@
+
+class Outer{
+	static class Inner{
+		private static int x = 4;
+		public static void display(){
+			System.out.println("Outer x : " + x);
+		}
+}
+}
+
+public class Test{
+	public static void main(String[] ar){
+		Outer.Inner in = new Outer.Inner();
+		Outer out = new Outer();
+		in.display();
+	}
+}

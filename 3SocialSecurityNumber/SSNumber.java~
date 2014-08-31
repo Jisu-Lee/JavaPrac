@@ -1,0 +1,134 @@
+import java.io.*;
+import java.util.Calendar;
+
+public class SSNumber{
+	public static void main(String[] ar) throws IOException{
+		SocialSecurityNumber ssn = new SocialSecurityNumber();
+		ssn.setName();
+		ssn.setNumber();
+		ssn.showInfo();
+	}
+}
+
+ class SocialSecurityNumber{
+
+	private int[] ssNumber; 
+	private String name;
+	private int sum; private float temp;
+	private boolean bool;
+	BufferedReader in; 
+
+	public SocialSecurityNumber(){
+		ssNumber = new int[14];
+		name = "";
+		sum = 0; temp = 0.0f;
+		bool = false;
+		in = new BufferedReader(new InputStreamReader(System.in));
+	}
+
+	public void setName(){
+		System.out.print("Name : ");
+		name = in.readLine();
+	}
+	public void setNumber(){
+	do{
+		System.out.print("Social Security Number : ");
+		for(int i=0; i<ssNumber.length; i++){
+			ssNumber[i] = System.in.read() - 48;
+		}
+		System.in.read();
+		System.in.read();
+
+		if(ssNumber[2]*10 + ssNumber[3] > 12){
+			System.out.println("The combination of 3rd and 4th number cannot exceeds twelve.");
+			continue;
+		}
+
+		if(ssNumber[4]*10 + ssNumber[5] > 31){
+
+			System.out.println("The combination of 5th and 6th number cannot exceeds thirty one.");
+			continue;
+		}
+
+		if(ssNumber[7] < 1 || ssNumber[7] > 4){
+			System.out.println("The 7th Number should be between 1 and 4.");
+			continue;
+		}
+		int num = 2;
+	       	sum = 0;
+		for(int i=0; i<ssNumber.length-1; i++){
+			if(i == 6) continue;
+			if(num == 10) num = 2;
+			sum += ssNumber[i]*num++;
+		}
+
+		temp = (int)(sum/11.0f) * 11.0f + 11.0f - sum;
+		temp = temp - (int)(temp/10.0f) * 10.0f;
+
+		if(temp != ssNumber[13]){
+			System.out.println("The last number is invalid.");
+			continue;
+		}
+
+		bool = true;
+		}while(!bool);
+	}
+
+
+	public void showInfo(){
+		System.out.println("\nName : " + name);
+		System.out.print("Social Security number : ");
+		for(int i=0; i<ssNumber.length; i++){
+			if(i==6){
+				System.out.print("-");
+				continue;
+			}
+			System.out.print(ssNumber[i]);
+		}
+		String sex = null;
+		int year=0, month=0, day=0;
+		switch(ssNumber[7]){
+			case 1:
+				sex = "male";
+			case 2:
+				year = 1900;
+				sex = "female";
+				break;
+			case 3:
+				sex = "male";
+			case 4:
+				year = 2000;
+				sex = "female";
+				break;
+		}
+		year += ssNumber[0]*10 + ssNumber[1];
+		month = ssNumber[2]*10 + ssNumber[3];
+		day = ssNumber[4]*10 + ssNumber[5];
+
+		System.out.println("\nDoB : " + year + "." + month + "." + day);
+		System.out.println("Sex : " + sex);
+		
+		String place = null;
+
+		switch(ssNumber[8]){
+			case 0: place = "Seoul"; break;
+			case 1: place = "Daegyeon"; break;
+			case 2: place = "Daegu"; break;
+			case 3: place = "Busan"; break;
+			case 4: place = "JeonJu"; break;
+			case 5: place = "Gangwondo"; break;
+			case 6: place = "Jeju"; break;
+			case 7: place = "Gyeonggi"; break;
+			case 8: place = "Chungchung"; break;
+			case 9: place = "JeonLa"; break;
+		}
+
+		System.out.println("Birthplace : " + place);
+		int age;
+		Calendar cal = Calendar.getInstance();
+		age = cal.get(Calendar.YEAR) - year + 1;
+		System.out.println("Age : " + age);
+		}
+
+}
+

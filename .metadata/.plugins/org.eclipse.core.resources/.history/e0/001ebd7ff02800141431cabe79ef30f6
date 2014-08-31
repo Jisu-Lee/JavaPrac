@@ -1,0 +1,21 @@
+
+public class Test{
+        public static void main(String[] ar){
+        final int x = 5;
+        class TestInner{
+        	class TestInner2{
+        		int z = 8;
+        		class TestInner3{
+        			int w = 90;
+        		}
+        	}
+        	int y = 4;
+        	public void display(){
+        	System.out.println(x);
+        	System.out.println(y);
+        	}
+        }
+        TestInner.TestInner2.TestInner3 in3 = new TestInner().new TestInner2().new TestInner3(); 
+        System.out.println(in3.w);
+}
+}

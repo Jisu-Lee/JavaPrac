@@ -1,0 +1,22 @@
+class Outer{
+	private int x = 4;
+	Inner in = new Inner();
+	public void display(){
+		System.out.println("Outer x : " + x);
+		System.out.println("Inner y : " + in.y);
+	}
+	class Inner{
+		private int y = 3;
+		public int getY(){
+			return this.y;
+		}
+	}
+}
+
+public class Test{
+	public static void main(String[] ar){
+		Outer out = new Outer();
+		Outer.Inner in = out.new Inner();
+		out.display();	
+	}
+}

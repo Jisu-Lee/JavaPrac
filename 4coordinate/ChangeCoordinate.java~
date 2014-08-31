@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class ChangeCoordinate{
+	public static void main(String[] args) {
+	Coordinate coo = new Coordinate();
+	Scanner in = new Scanner(System.in);
+	int num = 0; 
+	
+	do{
+		System.out.print("\n1. Set coordinate 2. Display coordinate 3. exit : ");
+		num = in.nextInt();
+
+		if(num == 1){
+			coo.setCoordinate();
+		}
+		else if(num == 2){
+			coo.display();
+		}
+		else if(num == 3){
+			System.out.println("\n\tProgram ended.");
+			break;
+		}
+		else{
+			System.out.println("\n\tYou've entered a wrong number. Please enter again.");
+		}
+	}while(true);
+}
+}
+
+class Coordinate{
+	private float cooX, cooY;
+	Scanner in = new Scanner(System.in);
+
+	public Coordinate(){
+		cooX = 0.0f;
+		cooY = 0.0f;
+	}
+
+	public void setCoordinate(){
+		System.out.print("\n\tCoordinate X : ");
+		this.cooX = in.nextFloat();
+		System.out.print("\tCoordinate Y : ");
+		this.cooY = in.nextFloat();
+	}
+
+	public void display(){
+		System.out.println("\n\t(" + cooX + ", " + cooY + ")");
+	}
+}

@@ -1,0 +1,102 @@
+import java.io.*;
+
+public class PersonInfo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int num, pplnum, infoNum;
+		boolean bool = true;
+		Scanner in = new Scanner();
+		System.out.print("number of person : ");
+		num = in.nextInt();
+		Person[] person = new Person[num];
+
+		System.out.print("Whose information do you want to change? : ");
+		 pplnum = in.nextInt(); pplnum--;
+		
+		 System.out.print("Information to change(1. name 2. jumin 3. phone number 4. address) : ");
+		infoNum = in.nextInt();
+
+	while(bool){	
+		switch(infoNum){
+			case 1 :
+				System.out.print("name : ");
+				person[pplnum] = new person(in.next());
+				bool = false; break;
+			case 2 :
+				System.out.print("name, jumin :");
+				person[pplnum] = new person(in.next(), in.next());
+
+				bool = false; break;
+			case 3 :
+				System.out.print("name, jumin, phoneNum : ");
+				person[pplnum] = new person(in.next(), in.next(), in.next());
+
+		  		bool = false; break;
+			case  4 :
+				System.out.print("name, jumin, phoneNum, address :");
+				person[pplnum] = new person(in.next(), in.next(), in.next(), in.next());
+
+				bool = false; break;
+			default : 
+				System.out.println("Wrong number. Please enter again.");
+				break;
+		}
+	}
+
+
+class Person{
+	Private String name;
+	private String jumin;
+	private String phoneNum;
+	private String address;
+
+	public Person(){
+		name = "guest";
+		jumin = "000000-0000000";
+		phoneNum = "000-0000-0000";
+		address = "주소 기재하지 않음";
+	}
+
+	public Person(String name){
+		this();
+		this.name = name;
+	}
+
+	public Person(String name, String jumin){
+		this(name);
+		this.jumin = jumin;
+	}
+
+	public Person(String name, String jumin, String phoneNum){
+		this(name, jumin);
+		this.phoneNum = phoneNum;
+	}
+
+	public Person(String name, String jumin, String phoneNum, String address){
+		this(name, jumin, phoneNum);
+		this.address = address;
+	}
+}
+
+
+
+
+
+
+
+	public Person(String name){
+		this();
+		this.name = name;
+	public Person(String name){
+		this();
+		this.name = name;
+	public Person(String name){
+		this();
+		this.name = name;
+	public Person(String name){
+		this();
+		this.name = name;
+	public Person(String name){
+		this();
+		this.name = name;
